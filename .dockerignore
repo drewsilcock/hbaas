@@ -1,0 +1,33 @@
+Dockerfile
+
+# Application output
+hbaas-server
+
+# Auto-generated Swagger docs
+docs
+
+# Generated files
+gen-*.go
+
+# Binary data generated with go-bindata
+bindata.go
+
+.env
+.go-pkg
+.go-bin
+
+.idea
+.vscode
+
+*.swp
+*.swo
+.*.swp
+.*.swo
+*~
+.*~
+
+.git
+.gitignore
+.dockerignore
+.env.example
+.gitlab-ci.yml

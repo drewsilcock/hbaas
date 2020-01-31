@@ -1,0 +1,27 @@
+image: golang
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .go-bin
+    - .go-pkg
+
+stages:
+  - build
+  - lint
+  # No testing implemented currently.
+
+build-code:
+  stage: build
+  script:
+    - make compile
+
+lint:
+  stage: lint
+  before_script:
+    - wget -O - -q https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /go/bin v1.21.0
+    - make install
+    # We need to run the code-gen scripts for the linting to work.
+    - make code-gen
+  script:
+    - golangci-lint run .

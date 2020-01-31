@@ -1,0 +1,30 @@
+# Application output
+hbaas-server
+
+# Excel spreadsheet for creating the seed people data.
+seed-data.xlsx
+
+# Generated files
+gen-*.go
+
+# Auto-generated Swagger docs
+docs
+
+# Binary data generated with go-bindata
+bindata.go
+
+.env
+.go-pkg
+.go-bin
+
+# IDE files
+.idea
+.vscode
+
+# Vim files
+*.swp
+*.swo
+.*.swp
+.*.swo
+*~
+.*~
