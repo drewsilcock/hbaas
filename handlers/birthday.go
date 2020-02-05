@@ -64,7 +64,7 @@ func SayHappyBirthdayToPerson(c echo.Context) error {
 	}
 
 	person := &model.Person{}
-	if DB.Debug().Where("LOWER(name) = ?", name).First(person).Error != nil {
+	if DB.Where("LOWER(name) = ?", name).First(person).Error != nil {
 		return echo.NewHTTPError(
 			http.StatusNotFound,
 			fmt.Sprintf("No people found with name '%s'.", name),
