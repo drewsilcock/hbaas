@@ -40,10 +40,6 @@ var seedDatabaseCmd = &cobra.Command{
 	Run:   seedDatabase,
 }
 
-var (
-	db *gorm.DB
-)
-
 func seedDatabase(cmd *cobra.Command, args []string) {
 	peopleCsvBytes, err := seeddata.Asset("people.csv")
 	if err != nil {
@@ -56,7 +52,7 @@ func seedDatabase(cmd *cobra.Command, args []string) {
 		log.Fatal("Unable to unmarshal seed people from CSV:", err)
 	}
 
-	db, err = gorm.Open("postgres", viper.Get("postgres_url"))
+	db, err := gorm.Open("postgres", viper.Get("postgres_url"))
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
 	}

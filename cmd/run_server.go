@@ -34,9 +34,10 @@ var runServerCmd = &cobra.Command{
 func runServer(cmd *cobra.Command, args []string) {
 	db, err := gorm.Open("postgres", viper.Get("postgres_url"))
 	if err != nil {
-		log.Fatal("Failed to connect to database:", err)
+		log.Println("Failed to connect to database:", err, "; access to persistent storage will be disabled.")
+	} else {
+		defer db.Close()
 	}
-	defer db.Close()
 
 	e := router.New(db)
 
