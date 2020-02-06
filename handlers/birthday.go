@@ -26,7 +26,6 @@ func configureBirthdayRouter(g *echo.Group) {
 // @Summary Say happy birthday to a particular name.
 // @ID to-name
 // @Tags Saying Happy Birthday
-// @Security OAuth2Implicit
 // @Description Say happy birthday to a particular name.
 // @Produce text/plain
 // @Param name path string true "The name of the person to say happy birthday to."
@@ -41,10 +40,9 @@ func SayHappyBirthdayToName(c echo.Context) error {
 // @Summary Say happy birthday to a particular person.
 // @ID to-person
 // @Tags Saying Happy Birthday
-// @Security OAuth2Implicit
 // @Description Say happy birthday to a particular name.
 // @Produce text/plain
-// @Param name path string true "The ID of the person to say happy birthday to."
+// @Param name path string true "The name of the person in the BirthdayDB to say happy birthday to."
 // @Success 200 {string} string "Said happy birthday to person with specified ID."
 // @Failure 404 {object} echo.HTTPError "Person not found."
 // @Failure 500 {object} echo.HTTPError "Database not found."
@@ -107,7 +105,6 @@ func SayHappyBirthdayToPerson(c echo.Context) error {
 // @Summary Say happy birthday to everyone with a birthday on a particular date.
 // @ID by-date
 // @Tags Saying Happy Birthday
-// @Security OAuth2Implicit
 // @Description Say happy birthday to all people sharing specified birthday. Birthday should be specified in the format
 // @Description 'Feb-02'.
 // @Produce text/plain
